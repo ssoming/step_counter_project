@@ -63,41 +63,22 @@
 
 ### 트러블슈팅
 
-| 발생 문제 | 발생 원인 | 해결 방안 | 결과 |
-|-----------|-----------|-----------|------|
-| 블루투스 수신 시 한 자리 숫자만 인식 | 기존 수신 함수가 첫 번째 바이트 수신 즉시 반환하는 구조 | 팀원이 4자리 버퍼링 + idle 타임아웃 적용한 `rxtx_recv_goal()` 재설계, 최종 통합 로직에 병합 | 1~9999 범위 목표 걸음수 정상 수신 |
+| 발생 문제 | 발생 원인 | 역할 | 해결 방안 | 결과 |
+|-----------|-----------|------|-----------|------|
+| 블루투스 수신 시 한 자리 숫자만 인식 | 기존 수신 함수가 첫 번째 바이트 수신 즉시 반환하는 구조 | 문제 발견 → 팀원 전달 | 팀원이 `rxtx_recv_goal()` 재설계 (4자리 버퍼링 · `'\r'/'\n'` 종료 · idle 타임아웃 적용), 최종 통합 로직에 병합 | 1~9999 범위 목표 걸음수 정상 수신 |
+| 정지 상태에서 걸음 수 증가 오작동 | Z축 단일 입력 시 정지 중 중력 가속도로 인한 오판 | 문제 발견 → 팀원 전달 | 팀원이 X·Y·Z 3축 합산 모션 레벨 기반으로 STEP IP 재설계, HIGH_TH · LOW_TH 등 파라미터 추가 | 정지 시 걸음 수 오증가 해소, 감도 조정 가능 |
 
 ---
 
 ## 6. 디렉토리 구조 (Directory Structure)
 
-```
-step_counter_project/
-│
-├── SoC/
-│   ├── ip_repo/                              # 커스텀 IP 소스 (Verilog)
-│   │   ├── dotmatrix_ip_1_0/                 # MAX7219 도트매트릭스 IP
-│   │   ├── i2c_mpu_ip_1_0/                   # I2C MPU9250 IP
-│   │   ├── myip_rxtx_1_0/                    # 커스텀 UART TX/RX IP
-│   │   └── step_counter_ip_1_0/              # 걸음 수 카운터 IP
-│   │
-│   └── project_all/                          # Vivado 프로젝트
-│       ├── project_all.srcs/                 # Block Design 소스
-│       ├── project_all.runs/                 # 합성·구현 결과
-│       ├── project_all.hw/                   # 하드웨어 핸드오프
-│       ├── project_all.ip_user_files/        # IP 사용자 파일
-│       ├── design_1_wrapper.xsa              # Vitis 연동용 하드웨어 명세
-│       └── project_all.xpr                   # Vivado 프로젝트 파일
-│
-├── Vitis/
-│   ├── platform_Project_MPU_Counter/         # Vitis 플랫폼 (BSP · xparameters.h)
-│   │   ├── export/
-│   │   ├── hw/
-│   │   └── microblaze_riscv_0/
-│   │
-│   └── Project_MPU_Counter/                  # Vitis 애플리케이션 프로젝트
-│       ├── src/helloworld.c                  # 메인 소프트웨어 (상태 머신 · BT 통신)
-│       └── build/
-│
-└── SoC Project IP Register Description.docx  # IP 레지스터 데이터시트
-```
+| 경로 | 내용 |
+|------|------|
+| `SoC/ip_repo/dotmatrix_ip_1_0/` | MAX7219 도트매트릭스 IP (Verilog) |
+| `SoC/ip_repo/i2c_mpu_ip_1_0/` | I2C MPU9250 IP (Verilog) |
+| `SoC/ip_repo/myip_rxtx_1_0/` | 커스텀 UART TX/RX IP (Verilog) |
+| `SoC/ip_repo/step_counter_ip_1_0/` | 걸음 수 카운터 IP (Verilog) |
+| `SoC/project_all/` | Vivado 프로젝트 (Block Design · 합성·구현 결과 · `.xsa` · `.xpr`) |
+| `Vitis/platform_Project_MPU_Counter/` | Vitis 플랫폼 (BSP · `xparameters.h`) |
+| `Vitis/Project_MPU_Counter/src/helloworld.c` | 메인 소프트웨어 (상태 머신 · BT 통신) |
+| `SoC Project IP Register Description.docx` | IP 레지스터 데이터시트 |
