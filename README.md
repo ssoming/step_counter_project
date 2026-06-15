@@ -12,9 +12,9 @@
 |------|------|
 | 플랫폼 | BASYS3 (Xilinx Artix-7 FPGA) |
 | 언어 | Verilog, C |
-| 도구 | Vivado HLx, Vitis |
+| 도구 | Vivado, Vitis, VS Code |
 | 통신 | I2C (MPU9250), SPI (MAX7219), UART / Bluetooth (HC-06) |
-| 개발 기간 | 2026.05 |
+| 개발 기간 | 2026.05.14-20 |
 | 팀 구성 | 3인 팀 프로젝트 |
 
 ---
@@ -48,7 +48,6 @@
 
 | 구성 요소 | 역할 |
 |------|------|
-| MicroBlaze RISC-V | AXI Interconnect 기반 소프트 프로세서 |
 | I2C_MPU IP | MPU9250 가속도 X·Y·Z 주기 읽기, `data_valid` 신호 출력 |
 | STEP IP | 3축 합산 모션 레벨 기반 걸음 수·거리 산출, 임계값 파라미터 레지스터 제공 |
 | MAX7219 IP | 8×32 도트매트릭스 SPI 제어 (din · cs · csk) |
