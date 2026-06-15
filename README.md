@@ -44,14 +44,7 @@
 ![Vivado](https://img.shields.io/badge/Vivado-FF0000?style=for-the-badge&logo=xilinx&logoColor=white)
 ![Vitis](https://img.shields.io/badge/Vitis-FF6600?style=for-the-badge&logo=xilinx&logoColor=white)
 
-### 시스템 구성
-
-| 구성 요소 | 역할 |
-|------|------|
-| I2C_MPU IP | MPU9250 가속도 X·Y·Z 주기 읽기, `data_valid` 신호 출력 |
-| STEP IP | 3축 합산 모션 레벨 기반 걸음 수·거리 산출, 임계값 파라미터 레지스터 제공 |
-| MAX7219 IP | 8×32 도트매트릭스 SPI 제어 (din · cs · csk) |
-| UART IP (myip_rxtx) | TX/RX 겸용, `BAUD_DIV` 레지스터로 보드레이트 가변 설정 |
+![block_diagram](AXI_CustomIPSystem_Blockdiagram.png)
 
 ---
 
