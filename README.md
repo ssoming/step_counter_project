@@ -12,7 +12,7 @@
 |------|------|
 | 플랫폼 | BASYS3 (Xilinx Artix-7 FPGA) |
 | 언어 | Verilog, C |
-| 도구 | Vivado, Vitis, VS Code |
+| 도구 | Vivado, Vitis, VsCode |
 | 통신 | I2C (MPU9250), SPI (MAX7219), UART / Bluetooth (HC-06) |
 | 개발 기간 | 2026.05.14-20 |
 | 팀 구성 | 3인 팀 프로젝트 |
