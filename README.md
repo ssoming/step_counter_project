@@ -17,7 +17,7 @@
 | 언어 | Verilog, C |
 | 도구 | Vivado HLx, Vitis |
 | 통신 | I2C (MPU9250), SPI (MAX7219), UART / Bluetooth (HC-06) |
-| 개발 기간 | 2026.05 |
+| 개발 기간 | 2026.05.14 - 05.20 |
 | 팀 구성 | 3인 팀 프로젝트 |
  
 ---
