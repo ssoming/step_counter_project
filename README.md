@@ -43,7 +43,7 @@
  
 ### Block Diagram
  
-![block_diagram](block_diagram.png)
+![block_diagram](AXI_CustomIPSystem_Blockdiagram.png)
  
 ### 핵심 구현
  
